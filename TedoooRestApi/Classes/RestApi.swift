@@ -43,19 +43,31 @@ public protocol RestApiClient {
 }
 
 public struct UploadImageRequest {
-   
+    
+    public let id : String
     public let token: String
     public let image: UIImage?
     public let maxSize: Int
     public let chat: Bool
     
-    public init(image: UIImage?, maxSize: Int = 150000, chat: Bool = false, token: String) {
+    public init(id: String, image: UIImage?, maxSize: Int = 150000, chat: Bool = false, token: String) {
+        self.id = id
         self.image = image
         self.maxSize = maxSize
         self.chat = chat
         self.token = token
     }
     
+}
+ 
+public struct UploadImageResponse {
+    public init(id: String, result: UploadImageResult) {
+        self.id = id
+        self.result = result
+    }
+    
+    public let id: String
+    public let result: UploadImageResult
 }
 
 public enum UploadImageResult {
@@ -66,6 +78,6 @@ public enum UploadImageResult {
 
 public protocol AwsClient {
     
-    func uploadImage(request: UploadImageRequest) -> AnyPublisher<UploadImageResult, Never>
+    func uploadImage(request: UploadImageRequest) -> AnyPublisher<UploadImageResponse, Never>
     
 }
