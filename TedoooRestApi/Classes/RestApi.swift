@@ -61,7 +61,7 @@ public struct UploadImageRequest {
 }
  
 public struct UploadImageResponse {
-    public init(id: String, result: UploadImageResult) {
+    public init(id: String = "", result: UploadImageResult) {
         self.id = id
         self.result = result
     }
