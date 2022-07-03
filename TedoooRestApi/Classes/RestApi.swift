@@ -50,7 +50,7 @@ public struct UploadImageRequest {
     public let maxSize: Int
     public let chat: Bool
     
-    public init(id: String, image: UIImage?, maxSize: Int = 150000, chat: Bool = false, token: String) {
+    public init(id: String = "", image: UIImage?, maxSize: Int = 150000, chat: Bool = false, token: String) {
         self.id = id
         self.image = image
         self.maxSize = maxSize
@@ -61,7 +61,7 @@ public struct UploadImageRequest {
 }
  
 public struct UploadImageResponse {
-    public init(id: String = "", result: UploadImageResult) {
+    public init(id: String, result: UploadImageResult) {
         self.id = id
         self.result = result
     }
