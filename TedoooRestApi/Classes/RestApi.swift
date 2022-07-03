@@ -33,12 +33,12 @@ public struct HttpRequest {
 
 public protocol RestApiClient {
     
-    func requestRx<T: Encodable, V: Decodable>(outputType: V.Type, request: HttpRequest, parameters: T) -> Future<V, RestException>
+    func requestRx<T: Encodable, V: Decodable>(outputType: V.Type, request: HttpRequest, parameters: T) -> AnyPublisher<V, RestException>
     
-    func requestRx<T: Decodable>(outputType: T.Type, request: HttpRequest) -> Future<T, RestException>
+    func requestRx<T: Decodable>(outputType: T.Type, request: HttpRequest) -> AnyPublisher<T, RestException>
     
-    func requestRx<T: Encodable>(request: HttpRequest, parameters: T) -> Future<Any?, RestException>
-    func requestRx(request: HttpRequest) -> Future<Any?, RestException>
+    func requestRx<T: Encodable>(request: HttpRequest, parameters: T) -> AnyPublisher<Any?, RestException>
+    func requestRx(request: HttpRequest) -> AnyPublisher<Any?, RestException>
     
 }
 
