@@ -31,7 +31,7 @@ public struct HttpRequest {
     
 }
 
-public protocol RestExtensions {
+public protocol RestApiClient {
     
     func requestRx<T: Encodable, V: Decodable>(outputType: V.Type, request: HttpRequest, parameters: T) -> Future<V, RestException>
     
@@ -39,5 +39,31 @@ public protocol RestExtensions {
     
     func requestRx<T: Encodable>(request: HttpRequest, parameters: T) -> Future<Any?, RestException>
     func requestRx(request: HttpRequest) -> Future<Any?, RestException>
+    
+}
+
+public struct UploadImageRequest {
+   
+    public let image: UIImage?
+    public let maxSize: Int
+    public let chat: Bool
+    
+    public init(image: UIImage?, maxSize: Int = 150000, chat: Bool = false) {
+        self.image = image
+        self.maxSize = maxSize
+        self.chat = chat
+    }
+    
+}
+
+public enum UploadImageResult {
+    case success(_ url: String)
+    case progress(_ progress: CGFloat)
+    case failure(_ error: Error)
+}
+
+public protocol AwsClient {
+    
+    func uploadImage(request: UploadImageRequest) -> AnyPublisher<UploadImageResult, Never>
     
 }
