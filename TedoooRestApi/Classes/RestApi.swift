@@ -17,14 +17,14 @@ public struct HttpRequest {
 
     public let baseUrl: String?
     public let path: String
-    public let token: String?
+    public let withAuth: Bool
     public let method: HttpMethod
     public let queries: [String: String]
     
-    public init(baseUrl: String? = nil, path: String, token: String?, method: HttpMethod = .get, queries: [String : String] = [:]) {
+    public init(baseUrl: String? = nil, path: String, withAuth: Bool, method: HttpMethod = .get, queries: [String : String] = [:]) {
         self.baseUrl = baseUrl
         self.path = path
-        self.token = token
+        self.withAuth = withAuth
         self.method = method
         self.queries = queries
     }
