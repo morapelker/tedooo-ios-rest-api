@@ -45,17 +45,15 @@ public protocol RestApiClient {
 public struct UploadImageRequest {
     
     public let id : String
-    public let token: String
     public let image: UIImage?
     public let maxSize: Int
     public let chat: Bool
     
-    public init(id: String = "", image: UIImage?, maxSize: Int = 150000, chat: Bool = false, token: String) {
+    public init(id: String = "", image: UIImage?, maxSize: Int = 150000, chat: Bool = false) {
         self.id = id
         self.image = image
         self.maxSize = maxSize
         self.chat = chat
-        self.token = token
     }
     
 }
